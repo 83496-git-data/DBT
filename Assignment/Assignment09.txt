@@ -19,27 +19,22 @@ kd4_sabir_83496>select onum,cname from orders,customers where customers.cnum=ord
 
 ========================================================================================== Q.2 ==========================================================================================================
 
-kd4_sabir_83496>select sname,cname,onum from orders,customers,salespeople where orders.snum=salespeople.snum and orders.snum=customers.snum;
+kd4_sabir_83496>select sname,cname,onum from orders,customers,salespeople where orders.snum=salespeople.snum and orders.cnum=customers.cnum;
 +---------+----------+------+
 | sname   | cname    | onum |
 +---------+----------+------+
-| rifkin  | cisneros | 3001 |
-| peel    | clemens  | 3003 |
 | peel    | hoffman  | 3003 |
-| motika  | pereira  | 3002 |
-| serres  | grass    | 3005 |
+| axelrod | liu      | 3009 |
 | serres  | liu      | 3005 |
-| rifkin  | cisneros | 3006 |
-| axelrod | giovanni | 3009 |
-| serres  | grass    | 3007 |
-| serres  | liu      | 3007 |
-| peel    | clemens  | 3008 |
-| peel    | hoffman  | 3008 |
 | serres  | grass    | 3010 |
-| serres  | liu      | 3010 |
+| serres  | grass    | 3007 |
 | peel    | clemens  | 3011 |
-| peel    | hoffman  | 3011 |
+| peel    | clemens  | 3008 |
+| rifkin  | cisneros | 3006 |
+| rifkin  | cisneros | 3001 |
+| motika  | pereira  | 3002 |
 +---------+----------+------+
+
 
 ============================================================================================= Q.3 ========================================================================================================
 
