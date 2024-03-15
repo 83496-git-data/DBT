@@ -1,0 +1,50 @@
+
+============================================================================================ Q.1 =========================================================================================================
+
+kd4_sabir_83496>create table multicust as select * from salespeople where snum=any(select snum from customers group by snum having count(snum)>1);
+Query OK, 2 rows affected, 1 warning (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+kd4_sabir_83496>select * from multicust;
++------+--------+----------+------+
+| snum | sname  | city     | comm |
++------+--------+----------+------+
+| 1001 | peel   | london   | 0.12 |
+| 1002 | serres | san jose | 0.13 |
++------+--------+----------+------+
+2 rows in set (0.00 sec)
+
+============================================================================================= Q.2 ========================================================================================================
+
+kd4_sabir_83496>delete from customers  where cnum NOT IN(Select abcd.cnum from (select c1.cnum from customers c1,orders o1 where c1.cnum=o1.cnum)as abcd);
+Query OK, 1 row affected (0.01 sec)
+
+kd4_sabir_83496>select * from customers;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | hoffman  | london   |    100 | 1001 |
+| 2003 | liu      | san jose |    200 | 1002 |
+| 2004 | grass    | berlin   |    300 | 1002 |
+| 2006 | clemens  | london   |    100 | 1001 |
+| 2008 | cisneros | san jose |    300 | 1007 |
+| 2007 | pereira  | rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+
+============================================================================================== Q.3 =======================================================================================================
+
+kd4_sabir_83496>update salespeople set comm=comm+0.2 where snum= any(select distinct snum from orders where amt>3000);
+Query OK, 2 rows affected (0.07 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+kd4_sabir_83496>table salespeople;
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | peel    | london    | 0.32 |
+| 1002 | serres  | san jose  | 0.33 |
+| 1004 | motika  | london    | 0.11 |
+| 1007 | rifkin  | barcelona | 0.15 |
+| 1003 | axelrod | new york  | 0.10 |
++------+---------+-----------+------+
+
